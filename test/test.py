@@ -35,10 +35,13 @@ class MyWindow(QtWidgets.QWidget):
 
 
 if __name__ == "__main__":
-    import sys
     import time, datetime
     import re
-    import os
+    import os, sql_metadata
+
+    sqlStr = "CREATE TABLE TAB_1 IF NOT EXISTS TEST AS SELECT NAME, ADDRESS, PHONE FROM ${OdsSafeDatabase}.epcis_pasdata_ply_info a LEFT JOIN ${OdsSafeDatabase}.epcis_pasdata_ply_extend_info b ON A.PLY_NO = B.PLY_NO WHERE A.PART_DT = ${DT};"
+    tables = sql_metadata.get_query_tokens(sqlStr)
+    print(tables)
 
     print(time.time())
     curDate = datetime.datetime.now()
