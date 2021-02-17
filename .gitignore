@@ -142,3 +142,4 @@ cython_debug/
 #隐藏文件
 .idea
 /doc
+/main/dist
